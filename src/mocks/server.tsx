@@ -3,7 +3,6 @@ import { handlers } from "./handler";
 
 export const server = setupServer(...handlers);
 
-// src/test-utils.tsx - Custom render with providers
 import React, { ReactElement } from "react";
 import { render, RenderOptions } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
