@@ -1,0 +1,155 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "name": "Admin User",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "email": "user1@example.com",
+      "password": "user123",
+      "name": "John Doe",
+      "role": "user"
+    },
+    {
+      "id": "3",
+      "email": "user2@example.com",
+      "password": "user456",
+      "name": "Jane Smith",
+      "role": "user"
+    },
+    {
+      "id": "4",
+      "email": "inactive@example.com",
+      "password": "inactive789",
+      "name": "Inactive User",
+      "role": "user",
+      "isActive": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Design Homepage",
+      "description": "Create wireframes and mockups for the homepage.",
+      "status": "todo",
+      "userId": "2",
+      "categoryId": "1",
+      "createdAt": "2025-07-25T10:00:00Z",
+      "updatedAt": "2025-07-25T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "title": "Implement Authentication",
+      "description": "Set up login and logout functionality with JWT.",
+      "status": "in-progress",
+      "userId": "2",
+      "categoryId": "2",
+      "createdAt": "2025-07-24T09:00:00Z",
+      "updatedAt": "2025-07-26T14:30:00Z"
+    },
+    {
+      "id": "3",
+      "title": "Write Unit Tests",
+      "description": "Add RTL tests for TaskList component.",
+      "status": "done",
+      "userId": "3",
+      "categoryId": "2",
+      "createdAt": "2025-07-23T08:00:00Z",
+      "updatedAt": "2025-07-27T16:00:00Z"
+    },
+    {
+      "id": "4",
+      "title": "Fix Navbar Bug",
+      "description": "Resolve responsive navbar alignment issue.",
+      "status": "todo",
+      "userId": "3",
+      "categoryId": "1",
+      "createdAt": "2025-07-27T12:00:00Z",
+      "updatedAt": "2025-07-27T12:00:00Z"
+    },
+    {
+      "id": "5",
+      "title": "Optimize API Calls",
+      "description": "Batch fetch tasks to reduce network requests.",
+      "status": "in-progress",
+      "userId": "2",
+      "categoryId": "2",
+      "createdAt": "2025-07-26T11:00:00Z",
+      "updatedAt": "2025-07-28T15:00:00Z"
+    },
+    {
+      "id": "6",
+      "title": "Empty Task",
+      "description": "",
+      "status": "todo",
+      "userId": "4",
+      "categoryId": "3",
+      "createdAt": "2025-07-28T10:00:00Z",
+      "updatedAt": "2025-07-28T10:00:00Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Design"
+    },
+    {
+      "id": "2",
+      "name": "Development"
+    },
+    {
+      "id": "3",
+      "name": "Miscellaneous"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "taskId": "1",
+      "userId": "2",
+      "content": "Need feedback on the wireframes.",
+      "createdAt": "2025-07-25T11:00:00Z"
+    },
+    {
+      "id": "2",
+      "taskId": "1",
+      "userId": "3",
+      "content": "Looks good, but adjust the header size.",
+      "createdAt": "2025-07-25T12:00:00Z"
+    },
+    {
+      "id": "3",
+      "taskId": "2",
+      "userId": "2",
+      "content": "Working on JWT refresh tokens.",
+      "createdAt": "2025-07-26T15:00:00Z"
+    }
+  ],
+  "status":{
+    "todo": {
+      "value" : "To-do",
+      "children": null
+    },
+    "in-progress": {
+      "value": "In Progress",
+      "children": {
+        "subtasks": [{
+          "value": "Development",
+          "children": null
+        },
+        {
+          "value": "Review",
+         "children": null
+        }]
+      }
+    },
+    "done": {
+      "value": "Done",
+      "children": null
+    }
+  }
+}
