@@ -1,0 +1,30 @@
+name: OpenShift Build and Deploy
+
+on:
+  push:
+    branches:
+      - main # run on push to main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Login to OpenShift
+        run: |
+          oc login ${{ secrets.OPENSHIFT_SERVER }} \
+            --token=${{ secrets.OPENSHIFT_TOKEN }} \
+            --insecure-skip-tls-verify=true \
+            -n ${{ secrets.OPENSHIFT_NAMESPACE }}
+
+      - name: Start Build
+        run: |
+          oc start-build jira-like-dashboard-git --wait -n ${{ secrets.OPENSHIFT_NAMESPACE }}
+
+      - name: Deploy Latest Image
+        run: |
+          oc rollout restart dc/jira-like-dashboard-git -n ${{ secrets.OPENSHIFT_NAMESPACE }}
+          oc rollout status dc/jira-like-dashboard-git -n ${{ secrets.OPENSHIFT_NAMESPACE }}

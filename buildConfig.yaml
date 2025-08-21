@@ -1,0 +1,35 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: jira-like-dashboard-git-2
+  namespace: anweshap99-dev
+  labels:
+    app: jira-like-dashboard-git
+spec:
+  runPolicy: Serial
+  source:
+    type: Git
+    git:
+      uri: "https://github.com/anweshapalit99/jira-like-dashboard.git"
+      ref: main
+    contextDir: /
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: "nodejs:22-minimal-ubi9"
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "jira-like-dashboard-git:latest"
+  triggers:
+    - type: GitHub
+      github:
+        secret: "mysecret123"
+    - type: Generic
+      generic:
+        secret: "mysecret123"
+    - type: ConfigChange
+    - type: ImageChange

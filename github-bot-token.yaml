@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: github-bot-token
+  namespace: anweshap99-dev
+  annotations:
+    kubernetes.io/service-account.name: github-bot
+type: kubernetes.io/service-account-token
